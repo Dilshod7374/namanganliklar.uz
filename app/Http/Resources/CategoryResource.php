@@ -19,7 +19,6 @@ class CategoryResource extends JsonResource
             'name_uz' => $this->name_uz,
             'name_ru' => $this->name_uz,
             'slug' => $this->slug,
-            'posts' => PostResource::collection($this->posts),
         ];
     }
 }

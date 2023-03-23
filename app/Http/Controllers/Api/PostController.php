@@ -34,8 +34,6 @@ class PostController extends Controller
         }
         Post::create($request->all());
 
-
-
         return response(['success' => 'Post muvaffaqayiyatli qo`shildi']);
 
     }
@@ -45,7 +43,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return response()->json($post);
+        return new PostResource($post);
     }
 
     /**
@@ -67,9 +65,10 @@ class PostController extends Controller
             }
         }
 
-        $post = Post::find($id)->update($requestData);
+        $post = Post::find($id);
+        $post->update($requestData);
 
-        return 'Ma`lumot o`zgartirildi';
+        return $post;
 
     }
 
